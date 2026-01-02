@@ -85,6 +85,7 @@ import { InstallGit } from './install-git'
 import { EditorError } from './editor'
 import { About } from './about'
 import { Publish } from './publish-repository'
+import { UpdateAllRepositories } from './update-all-repositories'
 import { Acknowledgements } from './acknowledgements'
 import { UntrustedCertificate } from './untrusted-certificate'
 import { NoRepositoriesView } from './no-repositories'
@@ -1740,6 +1741,17 @@ export class App extends React.Component<IAppProps, IAppState> {
             repository={popup.repository}
             accounts={this.state.accounts}
             onDismissed={onPopupDismissedFn}
+          />
+        )
+      case PopupType.UpdateAllRepositories:
+        return (
+          <UpdateAllRepositories
+            key="update-all-repositories"
+            onDismissed={onPopupDismissedFn}
+
+            repositories={this.state.repositories}
+            recentRepositories={this.state.recentRepositories}
+            localRepositoryStateLookup={this.state.localRepositoryStateLookup}
           />
         )
       case PopupType.UntrustedCertificate:

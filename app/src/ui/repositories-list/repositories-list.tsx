@@ -382,6 +382,7 @@ export class RepositoriesList extends React.Component<
       <div className="post-filter-content">
         <Button
           className="update-all-repositories-button"
+          onClick={this.onUpdateAllRepositoriesClick}
         >
           Update all repositories
           <Octicon symbol={octicons.sync} />
@@ -396,6 +397,12 @@ export class RepositoriesList extends React.Component<
     if (event.key === 'ArrowDown') {
       this.onNewRepositoryButtonClick()
     }
+  }
+
+  private onUpdateAllRepositoriesClick = () => {
+    this.props.dispatcher.showPopup({
+      type: PopupType.UpdateAllRepositories,
+    })
   }
 
   private renderNoItems = () => {

@@ -34,6 +34,7 @@ export enum PopupType {
   Preferences = 'Preferences',
   RepositorySettings = 'RepositorySettings',
   AddRepository = 'AddRepository',
+  UpdateAllRepositories = 'UpdateAllRepositories',
   CreateRepository = 'CreateRepository',
   CloneRepository = 'CloneRepository',
   CreateBranch = 'CreateBranch',
@@ -146,6 +147,7 @@ export type PopupDetail =
       initialSelectedTab?: RepositorySettingsTab
     }
   | { type: PopupType.AddRepository; path?: string }
+  | { type: PopupType.UpdateAllRepositories }
   | { type: PopupType.CreateRepository; path?: string }
   | {
       type: PopupType.CloneRepository
