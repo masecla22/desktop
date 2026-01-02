@@ -144,8 +144,11 @@ interface ISectionFilterListProps<T extends IFilterListItem, GroupIdentifier> {
   /** Called to render content before the filter. */
   readonly renderPreFilter?: () => JSX.Element | null
 
-  /** Called to render content after the filter. */
+  /** Called to render content after the filter. (in the same row element) */
   readonly renderPostFilter?: () => JSX.Element | null
+
+  /** Called to render content after the filter row. (after the row element) */
+  readonly renderPostFilterRow?: () => JSX.Element | null
 
   /** Called when there are no items to render.  */
   readonly renderNoItems?: () => JSX.Element | null
@@ -324,6 +327,8 @@ export class SectionFilterList<
         {this.props.renderPreList ? this.props.renderPreList() : null}
 
         {this.renderFilterRow()}
+
+        {this.props.renderPostFilterRow?.()}
 
         <div className="filter-list-container">{this.renderContent()}</div>
       </div>

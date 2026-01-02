@@ -82,6 +82,20 @@
     }
   }
 
+  .post-filter-content {
+    margin-bottom: var(--spacing);
+    padding-left: var(--spacing);
+    padding-right: var(--spacing);
+  }
+
+  .update-all-repositories-button {
+    width: 100%;
+
+    .octicon {
+      margin-left: 5px;
+    }
+  }
+
   .no-items {
     text-align: center;
     padding: var(--spacing);

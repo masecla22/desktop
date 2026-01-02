@@ -343,6 +343,7 @@ export class RepositoriesList extends React.Component<
           renderGroupHeader={this.renderGroupHeader}
           onItemClick={this.onItemClick}
           renderPostFilter={this.renderPostFilter}
+          renderPostFilterRow={this.renderPostFilterRow}
           renderNoItems={this.renderNoItems}
           groups={groups}
           invalidationProps={{
@@ -373,6 +374,19 @@ export class RepositoriesList extends React.Component<
         Add
         <Octicon symbol={octicons.triangleDown} />
       </Button>
+    )
+  }
+
+  private renderPostFilterRow = () => {
+    return (
+      <div className="post-filter-content">
+        <Button
+          className="update-all-repositories-button"
+        >
+          Update all repositories
+          <Octicon symbol={octicons.sync} />
+        </Button>
+      </div>
     )
   }
 
