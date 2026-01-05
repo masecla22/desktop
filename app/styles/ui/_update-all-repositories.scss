@@ -1,0 +1,132 @@
+@import '../mixins';
+
+.update-all-repositories-list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /**
+   * Container for repository list items in the dialog
+   *
+   * Contains two elements, one 16x16 <svg class='octicon'> holding an octicon
+   * representing the repository type (local, private, public, fork)
+   * and one <div class='name'> holding the repository name.
+   */
+  .repository-list-item {
+    padding: 0 var(--spacing);
+
+    // Layout the icon and repository name horizontally
+    display: flex;
+    flex-direction: row;
+    // This makes it so that both the icon and the repo name
+    // is vertically centered.
+    align-items: center;
+
+    // Necessary to limit the width of the repository
+    // name and truncate accordingly
+    width: 100%;
+
+    .icon-for-repository {
+      // Some room between the icon and repository name
+      margin-right: var(--spacing-half);
+
+      // Always let the octicon dictate the amount of space it needs
+      flex-shrink: 0;
+
+      // Force the octicon width
+      width: 16px;
+    }
+
+    .name {
+      // Long repository names truncate and ellipse
+      @include ellipsis;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-half);
+
+      .prefix {
+        color: var(--text-secondary-color);
+      }
+
+      /* Used to highlight substring matches in filtered lists */
+      mark {
+        font-weight: bold;
+        /* Reset browser defaults */
+        background-color: inherit;
+        color: currentColor;
+      }
+
+      .pending-push-indicator {
+        display: inline-flex;
+        align-items: center;
+        color: var(--tab-bar-active-color);
+        
+        .octicon {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+
+    .alias {
+      font-style: italic;
+    }
+
+    .repository-action-button {
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+  }
+
+  .filter-list-group-header {
+    padding-top: var(--spacing);
+    padding-left: var(--spacing);
+    padding-right: var(--spacing);
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .no-items {
+    text-align: center;
+    padding: var(--spacing);
+    word-wrap: break-word;
+
+    .title {
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+}
+
+dialog#update-all-repositories {
+  width: 600px;
+
+  .dialog-content {
+    height: 400px;
+    max-height: calc(100vh - 200px);
+    overflow: visible;
+  }
+}
+
+.dialog-content {
+  &.update-all-repositories-content {
+    padding: 0;
+    padding-top: var(--spacing-double);
+  }
+}
+
+.update-all-repositories-popover {
+  // Remove default popover padding so MenuPane can control its own layout
+  .popover-content {
+    padding: 0 !important;
+  }
+
+  // MenuPane styling within the popover
+  .menu-pane {
+    overflow-y: auto;
+    max-height: 300px;
+    min-width: 150px;
+    padding-bottom: 0;
+  }
+}
